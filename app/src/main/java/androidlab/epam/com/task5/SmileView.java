@@ -57,16 +57,12 @@ public class SmileView extends View {
         int width = smile.getWidth();
        if (width>1000) {
            mEyeAndMouthPaint.setStrokeWidth(70);
-           Log.d("1000", String.valueOf(smile.getWidth()));
        } else if(width>800){
            mEyeAndMouthPaint.setStrokeWidth(50);
-           Log.d("800", String.valueOf(smile.getWidth()));
        }else if(width>500){
            mEyeAndMouthPaint.setStrokeWidth(30);
-           Log.d("500", String.valueOf(smile.getWidth()));
        }else if(width>350){
            mEyeAndMouthPaint.setStrokeWidth(15);
-           Log.d("350", String.valueOf(smile.getWidth()));
        }else mEyeAndMouthPaint.setStrokeWidth(5);
     }
 
