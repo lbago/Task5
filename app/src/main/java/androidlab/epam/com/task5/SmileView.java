@@ -38,7 +38,6 @@ public class SmileView extends View {
         mCirclePaint.setColor(Color.YELLOW);
         mEyeAndMouthPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mEyeAndMouthPaint.setStyle(Paint.Style.STROKE);
-        mEyeAndMouthPaint.setStrokeWidth(25 * getResources().getDisplayMetrics().density);
         mEyeAndMouthPaint.setStrokeCap(Paint.Cap.ROUND);
         mEyeAndMouthPaint.setColor(Color.GRAY);
     }
@@ -53,6 +52,23 @@ public class SmileView extends View {
         int size = Math.min(w, h);
         setMeasuredDimension(size, size);
     }
+    private void setPen(Paint mEyeAndMouthPaint) {
+        View smile = (View) findViewById(R.id.smile);
+        int width = smile.getWidth();
+       if (width>1000) {
+           mEyeAndMouthPaint.setStrokeWidth(70);
+           Log.d("1000", String.valueOf(smile.getWidth()));
+       } else if(width>800){
+           mEyeAndMouthPaint.setStrokeWidth(50);
+           Log.d("800", String.valueOf(smile.getWidth()));
+       }else if(width>500){
+           mEyeAndMouthPaint.setStrokeWidth(30);
+           Log.d("500", String.valueOf(smile.getWidth()));
+       }else if(width>350){
+           mEyeAndMouthPaint.setStrokeWidth(15);
+           Log.d("350", String.valueOf(smile.getWidth()));
+       }else mEyeAndMouthPaint.setStrokeWidth(5);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -62,6 +78,9 @@ public class SmileView extends View {
         float eyeRadius = mRadius / 8f;
         float eyeOffsetX = mRadius / 3f;
         float eyeOffsetY = mRadius / 3f;
+        
+        setPen(mEyeAndMouthPaint);
+        
         canvas.drawCircle(mCenterX - eyeOffsetX, mCenterY - eyeOffsetY, eyeRadius, mEyeAndMouthPaint);
         canvas.drawCircle(mCenterX + eyeOffsetX, mCenterY - eyeOffsetY, eyeRadius, mEyeAndMouthPaint);
         // рисуем рот
